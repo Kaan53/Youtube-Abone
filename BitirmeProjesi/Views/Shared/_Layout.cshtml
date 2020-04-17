@@ -1,0 +1,358 @@
+﻿@model BitirmeProjesi.Models.UserModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Yousubscribe</title>
+    <link href="~/Files/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
+    <link href="~/fontawesome-free/css/all.min.css" rel="stylesheet" />
+    <link href="~/Files/resume.min.css" rel="stylesheet" />
+</head>
+@RenderBody()
+<body id="page-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">
+            <span class="d-block d-lg-none">Yousubscribe</span>
+            <span class="d-none d-lg-block">
+                <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="~/img/yt_1200-vflhSIVnY.png" alt="" />
+            </span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#about">KAYIT OL</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#experience">GIRIŞ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#education">NASIL YAPILIR?</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#skills">GÜVENLI MI?</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#interests">İletişim</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="#awards">Ek Bilgi</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container-fluid p-0">
+        <section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="about" style="background-image: url('../../img/SAGASDGASD.png');">
+            <fieldset>
+                <legend>
+                    <h1>KAYIT OL</h1>
+                </legend>
+                @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+                {
+                    <table>
+                        <tr>
+                            <td>
+                                <h5>Adı:</h5>
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control input-lg", placeholder = "Adı", Required = "required" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            </td>
+                            <td>
+                                @Html.ValidationMessageFor(model => model.FirstName, null, new { @class = " text text-danger" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h5>Soyadı:</h5>
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.LastName, new { @class = "form-control input-lg", placeholder = "Soyadı", Required = "required" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            </td>
+                            <td>
+                                @Html.ValidationMessageFor(model => model.LastName, null, new { @class = " text text-danger" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h5>Email:</h5>
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.Email, new { @class = "form-control input-lg", placeholder = "Email", Required = "required" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            </td>
+                            <td>
+                                @Html.ValidationMessageFor(model => model.Email, null, new { @class = " text text-danger" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h5>Şifre:</h5>
+                            </td>
+                            <td>
+                                @Html.PasswordFor(model => model.Password, new { @class = "form-control input-lg", placeholder = "Şifre", Required = "required" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            </td>
+                            <td>
+                                @Html.ValidationMessageFor(model => model.Password, null, new { @class = " text text-danger" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h5>Şifre Tekrarı:</h5>
+                            </td>
+                            <td>
+                                @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control input-lg", placeholder = "Şifre Tekrarı", Required = "required" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            </td>
+                            <td>
+                                @Html.ValidationMessageFor(model => model.ConfirmPassword, null, new { @class = " text text-danger" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            </td>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <input type="submit" value="Kayıt OL" class="btn btn-dark" />
+                                        </td>
+                                        <td>
+                                            <input type="reset" value="Sıfırla" class="btn btn-dark" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.ValidationMessage("Error", null, new { @class = "text text-danger" })
+                            </td>
+                        </tr>
+                    </table>
+                }
+            </fieldset>
+        </section>
+
+        <hr class="m-0">
+
+        <section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="experience" style=" );
+">
+            <fieldset>
+                <legend>
+                    <h1>GİRİŞ</h1>
+                </legend>
+                @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+                {
+                    <table>
+                        <tr>
+                            <td>
+                                <h5>Email:</h5>
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.Email, new { @class = "form-control input-lg", placeholder = "Email", Required = "required" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            </td>
+                            <td>
+                                @Html.ValidationMessageFor(model => model.Email, null, new { @class = "text text-danger" })
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <h5>Şifre:</h5>
+                            </td>
+                            <td>
+                                @Html.PasswordFor(model => model.Password, new { @class = "form-control input-lg", placeholder = "Şifre", Required = "required" })
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                            </td>
+                            <td>
+                                @Html.ValidationMessageFor(model => model.Password, null, new { @class = "text text-danger" })
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                            </td>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <input type="submit" value="Giriş Yap" class="btn btn-dark" />
+                                        </td>
+                                        <td>
+                                            <input type="submit" value="Sıfırla" class="btn btn-dark" />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.ValidationMessage("Error", null, new { @class = "text text-danger" });
+                            </td>
+                        </tr>
+                    </table>
+                }
+
+            </fieldset>
+        </section>
+
+        <hr class="m-0">
+
+        <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="education" style="background:#ed1c24">
+            <div class="w-100">
+                <h2 class="mb-5">
+                    Youtube Abone Kasma Nasıl Yapılır?
+
+                </h2>
+
+                <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="resume-content">
+                        <div class="subheading mb-3" style="color:white">
+                            Hizmetlerimizin kalitesini denemek amacıyla veya etkileşimi olmayan ya da çok az olan Youtube kanalınıza abone hilesi işlemi uygulayarak etkileşiminizde olumlu yönde hareketlilik sağlayabilirsiniz.
+
+                        </div>
+                    </div>
+                    <div class="resume-date text-md-right">
+                        <span style="color:white">Ağustos 2019 - Mayıs 2020</span>
+                    </div>
+                </div>
+
+                <div class="resume-item d-flex flex-column flex-md-row justify-content-between">
+                    <div class="resume-content">
+                        <h3 class="mb-0"> Youtube abone kasma işlemi aşağıdaki taktikleri uygulayarak kolayca gerçekleştirilebilir.</h3>
+                        <ul class="fa-ul mb-0">
+                            <li>
+                                <i class="fa-li fa fa-check"></i>
+                                Sitemiz üzerinde sizler için geliştirdiğimiz Youtube abone hilesi aracını açarak, ilgili alana Youtube kanal linkini eklemeniz gerekmektedir
+                            </li>
+                            <li>
+                                <i class="fa-li fa fa-check"></i>
+                                Daha sonra, solda kanalınızı görerek teyit edebilirsiniz
+                            </li>
+                            <li>
+                                <i class="fa-li fa fa-check"></i>
+                                Abone sayacı sabit bir sayı üzerinde durmaktadır. Daha fazlasını dilediğiniz takdirde, ‘daha fazla abone al’ butonu ile de işlem gerçekleştirebilirsiniz.
+                            </li>
+                            <li>
+                                <i class="fa-li fa fa-check"></i>
+                                ‘Ücretsiz abone al’ butonuna tıklayarak işleminizi devam ettirebilirsiniz.
+                            </li>
+                            <li>
+                                <i class="fa-li fa fa-check"></i>
+                                Youtube kanalınıza tanımladığınız aboneler çok kısa bir süre içerisinde hesabınıza tanımlanacaktır.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="resume-date text-md-right" style="color:white">
+                        <span>Ağustos 2019 - Mayıs 2020</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <hr class="m-0">
+
+        <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="skills">
+            <div class="w-100">
+                <h2 class="mb-5">
+                    Youtube Abone Hilesi Aracı Güvenli mi?
+
+                </h2>
+                <div class="subheading mb-3">sitesinin sunduğu tüm hizmetler gibi Youtube abone hilesi aracı da son derece güvenlidir. Güvenilir bir site olduğumuzu; hizmet esnasında sizlerden herhangi bir şifre talebinde bulunmamamız yani gerçekleştirdiğiniz tüm hizmetleri şifresiz olarak gerçekleştiriyor olmanız, 7/24 tüm ekibimizle sizlere sınırsız müşteri hizmetleri desteği sunmamız ve hizmetlerimizin hızlı ve hesabınıza zarar vermeden gerçekleştirilmesi gibi birçok nedenle açıklayabiliriz. Hizmetlerimizi denediğinizde sizler de diğer sitelerden çok farklı ve kaliteli hizmet sunduğumuzu fark edeceksiniz. Youtube abone kasma aracımızı ücretsiz olarak denediğinizde Youtube kanalınız, sitemiz üzerinde gerçekleştirdiğiniz bu işlem nedeniyle asla zarar görmez ve asla kapanma tehlikesi yaşamaz. İsterseniz 1000 ve üzeri abone hizmeti alın hesabınıza, gönül rahatlığı ile hizmetimizden faydalanabilir, Youtube kanalınızın etkileşimini arttırarak videolarınızın öne çıkanlar listesinde yer almasını sağlayabilirsiniz.</div>
+        </section>
+
+        <hr class="m-0">
+
+        <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="interests" style="background:#ed1c24">
+            <div class="w-100">
+                <h2 class="mb-5">İletişim</h2>
+                <p style="color:white">
+                    Sipariş öncesi ve sonrası sorularınız için destek departmanımızla 7 gün 24 saat iletişime geçebilirsiniz.
+
+                    SMS yoluyla gelen soru ve taleplere hızlıca cevap veremediğimiz için, diğer iletişim kanallarını kullanmanızı öneriyoruz.
+                </p>
+                <ul class="fa-ul mb-0">
+                    <li>
+                        <i class="fa-li fa fa-trophy text-warning"></i>
+                        0850 333 9 666
+                    </li>
+                    <li>
+                        <i class="fa-li fa fa-trophy text-warning"></i>
+                        0544 977 07 24
+                    </li>
+                    <li>
+                        <i class="fa-li fa fa-trophy text-warning"></i>
+                        info@instagramtakipcisatinal.com
+                    </li>
+                    <li>
+                        <i class="fa-li fa fa-trophy text-warning"></i>
+                        Serbest Liman ve Bölge, Gazimağusa / KKTC
+                    </li>
+
+                </ul>
+            </div>
+        </section>
+
+        <hr class="m-0">
+
+        <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="awards">
+            <div class="w-100">
+                <h2>EK BİLGİ</h2>
+                <h2 class="mb-5"></h2>
+                Youtube hesabınıza ücretli olarak youtube takipçi satın alabilirsiniz. Youtube'a dair tüm hizmetleri bulabileceğin yerdesin! Dilerseniz tamamı aktif türk takipçi satın alabilir, dilerseniz aktifliği olmayan bot takipçi satın alabilirsiniz. Yapacağınız tüm işlemler tarafınıza güvenli bir şekilde teslim edilir, faturalandırılır.
+            </div>
+        </section>
+    </div>
+
+    <!-- Bootstrap core JavaScript -->
+    @*<script src="vendor/jquery/jquery.min.js"></script>*@
+    <script src="~/Script_Files/jquery.min.js"></script>
+    @*<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>*@
+    <script src="~/Script_Files/bootstrap.bundle.min.js"></script>
+    <!-- Plugin JavaScript -->
+    @*<script src="vendor/jquery-easing/jquery.easing.min.js"></script>*@
+    <script src="~/Script_Files/jquery.easing.min.js"></script>
+    <!-- Custom scripts for this template -->
+    @*<script src="js/resume.min.js"></script>*@
+    <script src="~/Script_Files/resume.min.js"></script>
+</body>
+
+</html>
+
