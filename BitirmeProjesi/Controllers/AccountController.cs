@@ -28,13 +28,14 @@ namespace BitirmeProjesi.Controllers
             {
                 if (!objUserDBEntities.Users.Any(m => m.Email == objuserModel.Email))
                 {
-
                     User objUser = new DBModel.User();
                     objUser.CreatedOn = DateTime.Now;
                     objUser.Email = objuserModel.Email;
                     objUser.FirstName = objuserModel.FirstName;
                     objUser.LastName = objuserModel.LastName;
                     objUser.Password = objuserModel.Password;
+                    objUser.YoutubeAbone = objuserModel.YoutubeAbone;
+                    objUser.Puan = 100;
                     objUserDBEntities.Users.Add(objUser);
                     objUserDBEntities.SaveChanges();
                     objuserModel = new UserModel();

@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\onuri\source\repos\BitirmeProjesi\BitirmeProjesi\DBModel\UserDBModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\onuri\OneDrive\Belgeler\GitHub\Youtube-Abone\BitirmeProjesi\DBModel\UserDBModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

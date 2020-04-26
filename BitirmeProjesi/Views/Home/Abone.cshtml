@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<BitirmeProjesi.DBModel.User>
 @{
     Layout = null;
 }
@@ -49,9 +49,38 @@
     </nav>
     <div class="container-fluid p-0">
         <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="about">
-            <p>
-                DİKKAT! Abone siparişi verebilmeniz için Youtube hesabınızda en az bir video paylaşımı olmalıdır.
-            </p>
+                    <table class="table table-bordered text-center ">
+                      <thead>
+                          <tr>
+                              <td>
+                                  Kullanıcı Adı
+                              </td>
+                              <td>
+                                  Youtube Abone Linki 
+                              </td>
+                              <td>
+                                  Puan
+                              </td>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          @foreach (var item in Model)
+                          {
+                          <tr>
+                              <td>
+                                  @item.FirstName
+                              </td>
+                              <td>
+                                  <a href="@item.YoutubeAbone" class="abone" target="_blank" data-YoutubeAbone="@item.YoutubeAbone">@item.YoutubeAbone</a>
+                              </td>
+                              <td>
+                                  <a href="#"data-Puan="@item.Puan">@item.Puan</a>
+                              </td>
+                          </tr>
+                          }
+
+                      </tbody>
+                    </table>
         </section>
         <hr class="m-0">
         <section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="experience">
@@ -228,5 +257,26 @@
     <!-- Custom scripts for this template -->
     @*<script src="js/resume.min.js"></script>*@
     <script src="~/Script_Files/resume.min.js"></script>
+    <script>
+        var Puan = $(".Puan").data("Puan");
+        $(document).on("click", ".abone", function () {
+            $.ajax({
+                type: "post",
+                url: "/Home/Abone/",
+                data: { Puan:Puan },
+                success: function (durum) {
+                    if (durum == "true") {
+                        $(".uWatched i").css("color", "#757575");
+                    }
+                    else {
+                        $(".uWatched i").css("color", "#11df5b");
+                    }
+
+                    //window.location.replace("/Filmler/Index");
+                }
+            });
+        });
+    </script>
+
 </body>
 </html>

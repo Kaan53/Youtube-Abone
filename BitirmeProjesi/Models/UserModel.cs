@@ -9,7 +9,7 @@ namespace BitirmeProjesi.Models
     public class UserModel
     {
         public int UserId { get; set; }
-        [Required(AllowEmptyStrings = false, ErrorMessage ="First Name is Required")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "First Name is Required")]
         [Display(Name = "FirstName:")]
         public String FirstName { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "Last Name is Required")]
@@ -22,12 +22,25 @@ namespace BitirmeProjesi.Models
         [DataType(DataType.Password)]
         [Display(Name = "Password:")]
         public String Password { get; set; }
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Confirm-Password is Required")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Şifre giriniz")]
         [DataType(DataType.Password)]
         [Display(Name = "Confirm Password:")]
-        [Compare("Password", ErrorMessage = "Password and Confirm Password Should be Same")]
+        [Compare("Password", ErrorMessage = "Şifre giriniz")]
+
         public String ConfirmPassword { get; set; }
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Youtube Abone Linki Giriniz.")]
+        [Display(Name = "Youtube Abone Linki:")]
+        public String YoutubeAbone { get; set; }
+       
+
+
+
+
+
+
         public DateTime CreatedOn { get; set; }
         public string SuccessMessage { get; set; }
+        
+      
     }
 }

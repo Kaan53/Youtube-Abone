@@ -10,6 +10,8 @@
     <Property Name="Email" Type="varchar" MaxLength="150" Nullable="false" />
     <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="YoutubeAbone" Type="varchar" MaxLength="500" />
+    <Property Name="Puan" Type="int" />
   </EntityType>
   <EntityContainer Name="UserDBModelStoreContainer">
     <EntitySet Name="Users" EntityType="Self.Users" Schema="User" store:Type="Tables" />

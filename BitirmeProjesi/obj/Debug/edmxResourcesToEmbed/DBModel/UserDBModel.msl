@@ -4,6 +4,8 @@
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="UserDBModel.User">
         <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Puan" ColumnName="Puan" />
+          <ScalarProperty Name="YoutubeAbone" ColumnName="YoutubeAbone" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />
