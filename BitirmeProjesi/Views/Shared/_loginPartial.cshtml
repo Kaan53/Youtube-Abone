@@ -1,22 +1,24 @@
 ﻿@if (Session["Email"] == null)
 {
-<ul class="nav navbar-nav navbar-right">
-    <li>
-        @Html.ActionLink("Register", "Register", "Account", null, null)
-    </li>
-    <li>
-        @Html.ActionLink("Login", "Login", "Account", null, null)
-    </li>
-</ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            @Html.ActionLink("Register", "Register", "Account", null, null)
+        </li>
+        <li>
+            @Html.ActionLink("Login", "Register", "Account", null, null)
+        </li>
+    </ul>
 }
 else
 {
     <ul class="nav navbar-nav navbar-right">
-    <li>
-        @Html.ActionLink("Hi! " + Session["Email"], "Index", "Home", null, null)
-    </li>
-    <li>
-        @Html.ActionLink("Logout", "Logout", "Account", null, null)
-    </li>
-</ul>
+
+        <li class="invisible"><a href="" class="kullanici-id">@Session["UserId"]</a></li>
+        <li>
+            <p class="text-white">Merhaba <b> @Session["Email"]</b></p>
+        </li>
+        <li>
+            <a href="/Account/Logout" class="btn btn-dark" style="margin-left:68px">Çıkış Yap</a>
+        </li>
+    </ul>
 }

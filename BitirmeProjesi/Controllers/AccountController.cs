@@ -59,17 +59,20 @@ namespace BitirmeProjesi.Controllers
         [HttpPost]
 
         public ActionResult Login(LoginModel objLoginModel)
-        {if(ModelState.IsValid)
+        {
+            if (ModelState.IsValid)
             {
-                if (objUserDBEntities.Users.Where(m => m.Email == objLoginModel.Email && m.Password == objLoginModel.Password).FirstOrDefault() == null)
+                var logUser = objUserDBEntities.Users.FirstOrDefault(x => x.Email == objLoginModel.Email && x.Password == objLoginModel.Password);
+                if (logUser != null)
                 {
-                    ModelState.AddModelError("Error", "Invalid Email and Password");
-                    return RedirectToAction("Index", "Home");
+                    Session["Email"] = logUser.Email;
+                    Session["UserId"] = logUser.UserId;
+                    return RedirectToAction("Abone", "Home");
                 }
                 else
                 {
-                    Session["Email"] = objLoginModel.Email;
-                    return RedirectToAction("Abone", "Home");
+                    ModelState.AddModelError("Error", "Invalid Email and Password");
+                    return RedirectToAction("Index", "Home");
 
                 }
             }

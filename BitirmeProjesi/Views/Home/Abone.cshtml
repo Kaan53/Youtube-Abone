@@ -15,9 +15,16 @@
     <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">
     <link href="~/fontawesome-free/css/all.min.css" rel="stylesheet" />
     <link href="~/Files/resume.min.css" rel="stylesheet" />
+    <style>
+
+        ul li a {
+            color: white;
+        }
+    </style>
 </head>
 <body id="page-top">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+        @Html.Partial("_loginPartial")
         <a class="navbar-brand js-scroll-trigger" href="#page-top">
             <span class="d-block d-lg-none">Yousubscribe</span>
             <span class="d-none d-lg-block">
@@ -49,42 +56,58 @@
     </nav>
     <div class="container-fluid p-0">
         <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="about">
-                    <table class="table table-bordered text-center ">
-                      <thead>
-                          <tr>
-                              <td>
-                                  Kullanıcı Adı
-                              </td>
-                              <td>
-                                  Youtube Abone Linki 
-                              </td>
-                              <td>
-                                  Puan
-                              </td>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          @foreach (var item in Model)
-                          {
-                          <tr>
-                              <td>
-                                  @item.FirstName
-                              </td>
-                              <td>
-                                  <a href="@item.YoutubeAbone" class="abone" target="_blank" data-YoutubeAbone="@item.YoutubeAbone">@item.YoutubeAbone</a>
-                              </td>
-                              <td>
-                                  <a href="#"data-Puan="@item.Puan">@item.Puan</a>
-                              </td>
-                          </tr>
-                          }
+            <table class="table table-bordered text-center ">
+                <thead>
+                    <tr>
+                        <td>
+                            Kullanıcı Adı
+                        </td>
+                        <td>
+                            Youtube Abone Linki
+                        </td>
+                        <td>
+                            Puan
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @item.FirstName
+                            </td>
+                            <td>
+                                @{
+                                    int id = Convert.ToInt32(Session["UserId"]);
+                                    if (item.UserId == id)
+                                    {
+                                        <a href="#" class="abone btn btn-success disabled" data-YoutubeAbone="@item.YoutubeAbone">@item.YoutubeAbone</a>
+                                    }
+                                    else if (item.Puan == 0)
+                                    {
+                                        <a href="#" class="abone btn btn-danger disabled" data-YoutubeAbone="@item.YoutubeAbone"><p>bu hesabın puanı yetersiz!<br /> @item.YoutubeAbone</p></a>
+                                    }
+                                    else
+                                    {
+                                        <a href="@item.YoutubeAbone" target="_blank" class="abone" data-YoutubeAbone="@item.YoutubeAbone" disabled>@item.YoutubeAbone</a>
+                                    }
 
-                      </tbody>
-                    </table>
+
+
+                                }
+                            </td>
+                            <td>
+                                <a href="#" data-Puan="@item.Puan">@item.Puan</a>
+                            </td>
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
         </section>
         <hr class="m-0">
-        <section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="experience">
-        </section>
+        <section class="resume-section p-3 p-lg-5 d-flex justify-content-center" id="experience"></section>
         <hr class="m-0">
         <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="education">
             <div class="w-100">
@@ -97,40 +120,40 @@
                     Canlı Destek Hizmeti 7/24
                     52,00 ₺
                 </div>
-                    <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-                        <div class="resume-content">
-                            <h3 class="mb-0">250 YOUTUBE ABONE</h3>
-                            <div class="subheading mb-3">
-                                Türk Gerçek ve Aktif Kullanıcılar İle Kanalınızın Abone Sayısını Arttırın
+                <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="resume-content">
+                        <h3 class="mb-0">250 YOUTUBE ABONE</h3>
+                        <div class="subheading mb-3">
+                            Türk Gerçek ve Aktif Kullanıcılar İle Kanalınızın Abone Sayısını Arttırın
 
-                                En Ucuz Fiyat Avantajı
+                            En Ucuz Fiyat Avantajı
 
-                                Şifre Kesinlikle İstemiyoruz
+                            Şifre Kesinlikle İstemiyoruz
 
-                                Kolay Ödeme Yöntemleri ve Faturalı Hizmet
+                            Kolay Ödeme Yöntemleri ve Faturalı Hizmet
 
-                                Canlı Destek Hizmeti 7/24
+                            Canlı Destek Hizmeti 7/24
 
-                                117,50 ₺
-                            </div>
-                            <div>Computer Science - Web Development Track</div>
-                            <p>GPA: 3.23</p>
+                            117,50 ₺
                         </div>
-                        <div class="resume-date text-md-right">
-                            <span class="text-primary">Ağustos 2006 - May 2010</span>
-                        </div>
+                        <div>Computer Science - Web Development Track</div>
+                        <p>GPA: 3.23</p>
                     </div>
-                    <div class="resume-item d-flex flex-column flex-md-row justify-content-between">
-                        <div class="resume-content">
-                            <h3 class="mb-0">James Buchanan High School</h3>
-                            <div class="subheading mb-3">Technology Magnet Program</div>
-                            <p>GPA: 3.56</p>
-                        </div>
-                        <div class="resume-date text-md-right">
-                            <span class="text-primary">August 2002 - May 2006</span>
-                        </div>
+                    <div class="resume-date text-md-right">
+                        <span class="text-primary">Ağustos 2006 - May 2010</span>
                     </div>
                 </div>
+                <div class="resume-item d-flex flex-column flex-md-row justify-content-between">
+                    <div class="resume-content">
+                        <h3 class="mb-0">James Buchanan High School</h3>
+                        <div class="subheading mb-3">Technology Magnet Program</div>
+                        <p>GPA: 3.56</p>
+                    </div>
+                    <div class="resume-date text-md-right">
+                        <span class="text-primary">August 2002 - May 2006</span>
+                    </div>
+                </div>
+            </div>
         </section>
         <hr class="m-0">
         <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="skills">
@@ -247,36 +270,47 @@
         </section>
     </div>
     <!-- Bootstrap core JavaScript -->
-    @*<script src="vendor/jquery/jquery.min.js"></script>*@
+    
+    <script src="vendor/jquery/jquery.min.js"></script>
+    
     <script src="~/Script_Files/jquery.min.js"></script>
-    @*<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>*@
+    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    
     <script src="~/Script_Files/bootstrap.bundle.min.js"></script>
     <!-- Plugin JavaScript -->
-    @*<script src="vendor/jquery-easing/jquery.easing.min.js"></script>*@
+    
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    
     <script src="~/Script_Files/jquery.easing.min.js"></script>
     <!-- Custom scripts for this template -->
-    @*<script src="js/resume.min.js"></script>*@
+    
+    <script src="js/resume.min.js"></script>
+    
     <script src="~/Script_Files/resume.min.js"></script>
     <script>
-        var Puan = $(".Puan").data("Puan");
-        $(document).on("click", ".abone", function () {
-            $.ajax({
-                type: "post",
-                url: "/Home/Abone/",
-                data: { Puan:Puan },
-                success: function (durum) {
-                    if (durum == "true") {
-                        $(".uWatched i").css("color", "#757575");
-                    }
-                    else {
-                        $(".uWatched i").css("color", "#11df5b");
-                    }
+        $(function () {
+            var kullanici = $(".kullanici-id").text();
+            $(document).on("click", ".abone", function () {
+                let YoutubeAbone = $(this).data('youtubeabone');
+                $.ajax({
+                    type: "post",
+                    url: "/Home/Abone/",
+                    data: { kullanici: kullanici, YoutubeAbone: YoutubeAbone },
+                    success: function (sonuc) {
+                        if (sonuc == "true") {
+                            alert("işlem başarılı!")
+                        }
+                        else {
+                            alert("işlem başarısız!")
+                        }
 
-                    //window.location.replace("/Filmler/Index");
-                }
+                    }
+                });
             });
-        });
-    </script>
+        })
 
+    </script>
 </body>
 </html>

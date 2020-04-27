@@ -23,8 +23,16 @@ namespace BitirmeProjesi.Controllers
             return View(veri);
         }
         [HttpPost]
-        public ActionResult Abone(User u,int Puan)
+        public ActionResult Abone(int kullanici, string YoutubeAbone)
         {
+            var x = db.Users.Find(kullanici);
+            x.Puan += 10;
+
+            var kontrol = db.Users.FirstOrDefault(a => a.YoutubeAbone == YoutubeAbone);
+            var y = db.Users.Find(kontrol.UserId);
+            y.Puan -= 10;
+
+            db.SaveChanges();
             return View();
         }
     }
